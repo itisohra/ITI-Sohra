@@ -1,0 +1,119 @@
+{
+  "entities": {
+    "Circular": {
+      "title": "Circular",
+      "description": "Official government notifications, circulars, and orders published by ITI Sohra",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the circular"
+        },
+        "title": {
+          "type": "string",
+          "description": "Headline or subject of the notification",
+          "maxLength": 300
+        },
+        "date": {
+          "type": "string",
+          "description": "Publication date string (e.g. DD MMM YYYY)",
+          "maxLength": 30
+        },
+        "category": {
+          "type": "string",
+          "description": "Notice category (Admissions, Examinations, Results, Office Order, Tenders, General)",
+          "maxLength": 50
+        },
+        "refNo": {
+          "type": "string",
+          "description": "Official file reference number or memo number",
+          "maxLength": 100
+        },
+        "content": {
+          "type": "string",
+          "description": "Detailed text body of the circular",
+          "maxLength": 10000
+        },
+        "attachmentName": {
+          "type": "string",
+          "description": "Filename of attached document",
+          "maxLength": 200
+        },
+        "fileDataUrl": {
+          "type": "string",
+          "description": "Base64 or URL data of the circular document",
+          "maxLength": 1000000
+        },
+        "isRealUpload": {
+          "type": "boolean",
+          "description": "Flag indicating user uploaded circular"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of creation"
+        }
+      },
+      "required": ["id", "title", "date", "category", "refNo", "content"]
+    },
+    "GalleryItem": {
+      "title": "GalleryItem",
+      "description": "Photographs of campus, workshops, activities, and events at ITI Sohra",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the photo"
+        },
+        "title": {
+          "type": "string",
+          "description": "Photo title or activity title",
+          "maxLength": 200
+        },
+        "caption": {
+          "type": "string",
+          "description": "Description of the photograph",
+          "maxLength": 2000
+        },
+        "category": {
+          "type": "string",
+          "description": "Gallery category (Campus, Workshops, Events, Activities, Other)",
+          "maxLength": 50
+        },
+        "tag": {
+          "type": "string",
+          "description": "Short badge tag",
+          "maxLength": 50
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "Data URL or link to the photograph",
+          "maxLength": 1000000
+        },
+        "date": {
+          "type": "string",
+          "description": "Date or academic session",
+          "maxLength": 30
+        },
+        "isRealUpload": {
+          "type": "boolean",
+          "description": "Flag indicating real uploaded photograph"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of creation"
+        }
+      },
+      "required": ["id", "title", "caption", "category", "tag", "imageUrl"]
+    }
+  },
+  "firestore": {
+    "/circulars/{circularId}": {
+      "schema": "Circular",
+      "description": "Collection of official office circulars and notices accessible to public"
+    },
+    "/gallery/{photoId}": {
+      "schema": "GalleryItem",
+      "description": "Collection of campus and workshop photographs accessible to public"
+    }
+  }
+}

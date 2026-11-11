@@ -1,0 +1,6 @@
+{
+  "name": "Government ITI Sohra | Industrial Training Institute Meghalaya",
+  "description": "Official web portal of Government Industrial Training Institute (ITI) Sohra, East Khasi Hills, Meghalaya. Explore vocational trades, admissions, syllabus, notices, and campus facilities under DECT Meghalaya.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

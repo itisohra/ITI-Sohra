@@ -1,0 +1,66 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default-deny catch-all safety net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Circulars collection: Public read for trainees and applicants, write for signed-in administrator
+    match /circulars/{circularId} {
+      allow read: if true;
+
+      allow create: if isSignedIn()
+        && isValidId(circularId)
+        && request.resource.data.id is string
+        && request.resource.data.title is string
+        && request.resource.data.title.size() <= 300
+        && request.resource.data.category is string
+        && request.resource.data.category.size() <= 50
+        && request.resource.data.refNo is string
+        && request.resource.data.refNo.size() <= 100
+        && request.resource.data.content is string
+        && request.resource.data.content.size() <= 10000;
+
+      allow update: if isSignedIn()
+        && isValidId(circularId)
+        && request.resource.data.id is string
+        && request.resource.data.title is string
+        && request.resource.data.title.size() <= 300;
+
+      allow delete: if isSignedIn() && isValidId(circularId);
+    }
+
+    // Gallery collection: Public read for trainees and visitors, write for signed-in administrator
+    match /gallery/{photoId} {
+      allow read: if true;
+
+      allow create: if isSignedIn()
+        && isValidId(photoId)
+        && request.resource.data.id is string
+        && request.resource.data.title is string
+        && request.resource.data.title.size() <= 200
+        && request.resource.data.category is string
+        && request.resource.data.category.size() <= 50
+        && request.resource.data.caption is string
+        && request.resource.data.caption.size() <= 2000;
+
+      allow update: if isSignedIn()
+        && isValidId(photoId)
+        && request.resource.data.id is string
+        && request.resource.data.title is string
+        && request.resource.data.title.size() <= 200;
+
+      allow delete: if isSignedIn() && isValidId(photoId);
+    }
+  }
+}
