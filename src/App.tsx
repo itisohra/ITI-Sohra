@@ -49,7 +49,7 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [githubDeployOpen, setGithubDeployOpen] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
-  const liveUrl = "https://ais-pre-naxwonbvtqv47tiwtp2s7i-991503181738.asia-east1.run.app";
+  const liveUrl = "https://itisohra.github.io/ITI-Sohra/";
 
   const handleCopyLink = () => {
     try {
@@ -292,55 +292,59 @@ export default function App() {
       {/* Main Container matching Variation 13: max-width: 1200px; margin: 2rem auto; padding: 0 1rem; */}
       <div className="max-w-[1200px] mx-auto my-6 px-4 space-y-8">
         
-        {/* Official Live Website Activation Banner */}
-        <div className="bg-gradient-to-r from-blue-50 via-indigo-50 to-emerald-50 border-2 border-[#004a99] rounded-lg p-4 sm:p-5 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        {/* Official Live Website Announcement Banner */}
+        <div className="bg-gradient-to-r from-emerald-50 via-teal-50 to-blue-50 border-2 border-emerald-600 rounded-lg p-4 sm:p-5 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-start gap-3.5">
-            <div className="p-3 bg-[#004a99] text-white rounded-full shrink-0 shadow-xs mt-0.5">
-              <Globe className="w-6 h-6 text-amber-300" />
+            <div className="p-3 bg-emerald-600 text-white rounded-full shrink-0 shadow-xs mt-0.5">
+              <CheckCircle2 className="w-6 h-6 text-white" />
             </div>
             <div>
               <div className="flex flex-wrap items-center gap-2">
-                <span className="font-bold text-[#003875] text-base sm:text-lg">
-                  How to Make Your Website Public for Everyone
+                <span className="font-bold text-emerald-950 text-base sm:text-lg">
+                  🎉 Your Website is Live on GitHub Pages!
                 </span>
-                <span className="bg-[#004a99] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-                  1-Click Activation
+                <span className="bg-emerald-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1">
+                  <span className="w-2 h-2 rounded-full bg-white animate-ping" />
+                  Published & 100% Free Forever
                 </span>
               </div>
-              <p className="text-xs text-[#333] mt-1.5 max-w-2xl leading-relaxed">
-                Google AI Studio keeps websites private to you until you activate public sharing. To make your website open to all students, applicants, and the public:
+              <p className="text-xs text-emerald-900 mt-1 max-w-2xl leading-relaxed">
+                Your portal has been officially deployed to your GitHub account (<strong>itisohra</strong>) and is active for the public with free SSL security.
               </p>
               
-              <ol className="list-decimal ml-4 mt-2 text-xs text-[#1A1A1A] space-y-1 font-medium">
-                <li>Look at the <strong>very top-right corner of your screen</strong> in AI Studio (next to your Google profile picture).</li>
-                <li>Click the <strong>"Share"</strong> button.</li>
-                <li>Select <strong>"Anyone with the link can view"</strong> and copy your public link.</li>
-              </ol>
-
-              <div className="mt-2.5 flex items-center gap-2 text-xs text-[#004a99] font-semibold bg-white/80 p-2 rounded-xs border border-[#bcd0e4]">
-                <span>✓ Once you click "Share", your website and cloud database will immediately open for everyone across all devices!</span>
+              <div className="mt-2.5 flex flex-wrap items-center gap-2 text-xs">
+                <span className="text-[#333] font-bold">Official Public Website:</span>
+                <a
+                  href="https://itisohra.github.io/ITI-Sohra/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white border border-emerald-400 text-[#004a99] hover:underline font-mono font-bold px-2.5 py-1 rounded-sm text-[11px] sm:text-xs select-all break-all shadow-2xs"
+                >
+                  https://itisohra.github.io/ITI-Sohra/
+                </a>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-2 shrink-0 self-stretch sm:self-auto justify-end">
-            <button
-              type="button"
-              onClick={() => setGithubDeployOpen(true)}
-              className="w-full sm:w-auto bg-[#181717] hover:bg-black active:scale-95 text-white font-bold text-xs px-4 py-2.5 rounded-md shadow-md flex items-center justify-center gap-2 transition-all cursor-pointer ring-1 ring-white/20"
+          <div className="flex flex-wrap items-center gap-2 shrink-0 self-stretch sm:self-auto justify-end">
+            <a
+              href="https://itisohra.github.io/ITI-Sohra/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 sm:flex-initial bg-emerald-700 hover:bg-emerald-800 active:scale-95 text-white font-bold text-xs px-4 py-2.5 rounded-md shadow-md flex items-center justify-center gap-1.5 transition-all cursor-pointer"
             >
-              <Rocket className="w-4 h-4 text-amber-300" />
-              <span>🚀 Launch to GitHub Pages</span>
-            </button>
+              <ExternalLink className="w-4 h-4" />
+              <span>Visit Live Website</span>
+            </a>
 
             <button
               type="button"
-              onClick={() => {
-                alert('To activate your live link for everyone in AI Studio:\n\n1. Look at the top-right corner of AI Studio (near your Google account).\n2. Click the "Share" button.\n3. Turn on sharing for "Anyone with the link".\n\nGoogle will activate your public URL immediately!');
-              }}
-              className="w-full sm:w-auto bg-[#004a99] hover:bg-[#003875] active:scale-95 text-white font-bold text-xs px-4 py-2.5 rounded-md shadow-md flex items-center justify-center gap-1.5 transition-all cursor-pointer"
+              onClick={handleCopyLink}
+              className="bg-white hover:bg-emerald-50 text-emerald-900 border border-emerald-400 font-bold text-xs px-3.5 py-2.5 rounded-md flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-2xs"
+              title="Copy the public website link to share on WhatsApp or official notices"
             >
-              <span>Click "Share" at Top-Right ↗</span>
+              {copiedLink ? <CheckCircle2 className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4 text-emerald-700" />}
+              <span>{copiedLink ? 'Copied!' : 'Copy Link'}</span>
             </button>
           </div>
         </div>

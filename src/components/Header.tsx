@@ -260,18 +260,17 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
             )}
 
-            {/* 1-Click Share Website Button */}
-            <button
-              type="button"
-              onClick={() => {
-                alert('To make this website live for all visitors:\n\n1. Look at the top-right corner of Google AI Studio (near your Google profile icon).\n2. Click the "Share" button.\n3. Choose "Anyone with the link can view" and copy your link.\n\nOnce shared, Google activates the live URL immediately for everyone!');
-              }}
+            {/* Official Live Website Link */}
+            <a
+              href="https://itisohra.github.io/ITI-Sohra/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-[#004a99] hover:bg-[#003875] text-white text-xs font-bold px-3 py-1.5 rounded-xs transition-colors shadow-xs flex items-center gap-1.5 cursor-pointer"
-              title="Click for instructions on how to activate the public link for everyone"
+              title="Open your official live website on GitHub Pages"
             >
               <Globe className="w-3.5 h-3.5 text-amber-300" />
-              <span>Share Website</span>
-            </button>
+              <span>Visit Live Website ↗</span>
+            </a>
 
             {/* 1-Click Save to PC Button */}
             <button
