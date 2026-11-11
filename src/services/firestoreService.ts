@@ -18,11 +18,11 @@ const GALLERY_COLLECTION = 'gallery';
  */
 export function subscribeToCirculars(
   onData: (circulars: Notice[]) => void,
-  onError?: (err: Error) => void
-) {
+  onError?: (err: unknown) => void
+): () => void {
   try {
     const q = collection(db, CIRCULARS_COLLECTION);
-    return onSnapshot(
+    const unsubscribe = onSnapshot(
       q,
       (snapshot) => {
         const items: Notice[] = [];
@@ -34,13 +34,15 @@ export function subscribeToCirculars(
         onData(items);
       },
       (error) => {
-        handleFirestoreError(error, OperationType.GET, CIRCULARS_COLLECTION);
+        console.warn('Real-time circulars sync notification:', error.message || error);
         onError?.(error);
       }
     );
+    return unsubscribe;
   } catch (error) {
-    handleFirestoreError(error, OperationType.GET, CIRCULARS_COLLECTION);
-    throw error;
+    console.warn('Failed to subscribe to circulars from Firestore:', error);
+    onError?.(error);
+    return () => {};
   }
 }
 
@@ -49,11 +51,11 @@ export function subscribeToCirculars(
  */
 export function subscribeToGallery(
   onData: (photos: GalleryItem[]) => void,
-  onError?: (err: Error) => void
-) {
+  onError?: (err: unknown) => void
+): () => void {
   try {
     const q = collection(db, GALLERY_COLLECTION);
-    return onSnapshot(
+    const unsubscribe = onSnapshot(
       q,
       (snapshot) => {
         const items: GalleryItem[] = [];
@@ -65,13 +67,15 @@ export function subscribeToGallery(
         onData(items);
       },
       (error) => {
-        handleFirestoreError(error, OperationType.GET, GALLERY_COLLECTION);
+        console.warn('Real-time gallery sync notification:', error.message || error);
         onError?.(error);
       }
     );
+    return unsubscribe;
   } catch (error) {
-    handleFirestoreError(error, OperationType.GET, GALLERY_COLLECTION);
-    throw error;
+    console.warn('Failed to subscribe to gallery from Firestore:', error);
+    onError?.(error);
+    return () => {};
   }
 }
 

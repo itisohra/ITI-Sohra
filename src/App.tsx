@@ -49,7 +49,7 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [githubDeployOpen, setGithubDeployOpen] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
-  const liveUrl = "https://itisohra.github.io/ITI-Sohra/";
+  const liveUrl = "https://itisohra.github.io/";
 
   const handleCopyLink = () => {
     try {
@@ -315,20 +315,21 @@ export default function App() {
               <div className="mt-2.5 flex flex-wrap items-center gap-2 text-xs">
                 <span className="text-[#333] font-bold">Official Public Website:</span>
                 <a
-                  href="https://itisohra.github.io/ITI-Sohra/"
+                  href="https://itisohra.github.io/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-white border border-emerald-400 text-[#004a99] hover:underline font-mono font-bold px-2.5 py-1 rounded-sm text-[11px] sm:text-xs select-all break-all shadow-2xs"
                 >
-                  https://itisohra.github.io/ITI-Sohra/
+                  https://itisohra.github.io/
                 </a>
+                <span className="text-gray-500 text-[11px]">(Also mirrors at <a href="https://itisohra.github.io/ITI-Sohra/" target="_blank" rel="noopener noreferrer" className="underline hover:text-emerald-800">/ITI-Sohra/</a>)</span>
               </div>
             </div>
           </div>
 
           <div className="flex flex-wrap items-center gap-2 shrink-0 self-stretch sm:self-auto justify-end">
             <a
-              href="https://itisohra.github.io/ITI-Sohra/"
+              href="https://itisohra.github.io/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 sm:flex-initial bg-emerald-700 hover:bg-emerald-800 active:scale-95 text-white font-bold text-xs px-4 py-2.5 rounded-md shadow-md flex items-center justify-center gap-1.5 transition-all cursor-pointer"

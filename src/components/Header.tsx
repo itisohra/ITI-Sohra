@@ -262,7 +262,7 @@ export const Header: React.FC<HeaderProps> = ({
 
             {/* Official Live Website Link */}
             <a
-              href="https://itisohra.github.io/ITI-Sohra/"
+              href="https://itisohra.github.io/"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#004a99] hover:bg-[#003875] text-white text-xs font-bold px-3 py-1.5 rounded-xs transition-colors shadow-xs flex items-center gap-1.5 cursor-pointer"
